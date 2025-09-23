@@ -25,8 +25,12 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.get("/", async (req, res) => {
     const response = await client.query("SELECT * FROM books")
     const books = response.rows
-    console.log(books)
     res.render("index.ejs", {books})
+})
+
+app.post("/", (req, res) => {
+    console.log(req.body.action)
+    res.redirect("/")
 })
 
 app.get("/add", (req, res) => {
