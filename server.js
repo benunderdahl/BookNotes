@@ -4,7 +4,7 @@ import axios from "axios"
 import bodyParser from "body-parser"
 import "dotenv/config"
 
-const api_endpoint = "https://covers.openlibrary.org/b/isbn/0385472579-L.jpg"
+const api_endpoint = "https://covers.openlibrary.org/b/isbn/"
 
 
 const app = express();
@@ -33,11 +33,14 @@ app.get("/add", (req, res) => {
     res.render("add.ejs")
 })
 
-app.post("/add", (req, res) => {
-    console.log(req.body.title)
-    console.log(req.body.isbn)
-    console.log(req.body.description)
-    console.log(req.body.summary)
+app.post("/add", async (req, res) => {
+    const title = req.body.title
+    const isbn = req.body.isbn
+    const author = req.body.author
+    const summ = req.body.summary
+    const img = `${api_endpoint}${isbn}-L.jpg`
+    await client.query("INSERT INTO books (title, author, summary, isbn, image_url) VALUES ($1, $2, $3, $4, $5)", 
+        [title, author, summ, isbn, img])
     res.redirect("/")
 })
 
