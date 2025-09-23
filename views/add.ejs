@@ -1,0 +1,40 @@
+<%- include('partials/header.ejs') %>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+  <form action="/add" method="POST" class="card p-4 shadow-sm">
+    <!-- Book Name -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Book Name</label>
+      <input type="text" class="form-control" id="title" name="title" placeholder="Enter book title" required>
+    </div>
+
+    <!-- ISBN -->
+    <div class="mb-3">
+      <label for="isbn" class="form-label">ISBN</label>
+      <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter ISBN number" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="3" placeholder="Short description" required></textarea>
+    </div>
+
+    <!-- Summary -->
+    <div class="mb-3">
+      <label for="summary" class="form-label">Summary</label>
+      <textarea class="form-control" id="summary" name="summary" rows="5" placeholder="Detailed summary" required></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+
+
+
+<%- include('partials/footer.ejs') %>
