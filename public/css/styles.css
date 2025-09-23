@@ -1,3 +1,11 @@
 .item-container {
         margin-bottom: 10px; /* Adds 10px margin below each item */
       }
+
+      .hero-header {
+  height: 400px; /* adjust as needed */
+  background-image: url("/images/background.jpg"); /* your image path */
+  background-size: cover;   /* makes it fill the space */
+  background-position: center;
+  background-repeat: no-repeat;
+}

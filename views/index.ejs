@@ -3,26 +3,26 @@
 
 
 <div class="container my-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4"> 
     <% for (let i = 0; i < books.length; i++) { %>
-    <div class="row justify-content-center row-cols-md-2 mb-5">
+      <div class="col">
         <div class="card h-100" style="width: 18rem;">
-            <img class="card-img-top p-4" style="height: 200px; object-fit: cover;" src="<%= books[i].image_url %>" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"><%= books[i].title %></h5>
-                <p class="card-text"><%= books[i].author %></p>
-                <div class="row">
-                <form action="/" method="POST">
-                    <div class="row">
-                <button type="submit" name="action" value="read" class="btn btn-primary mb-3">Read More</button>
-                <button type="submit" name="action" value="update" class="btn btn-success mb-3">Update</button>
-                <button type="submit" name="action" value="delete" class="btn btn-danger">Delete</button>
-            </div>    
+          <img class="card-img-top p-4" style="height: 200px; object-fit: cover;" 
+               src="<%= books[i].image_url %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= books[i].title %></h5>
+            <p class="card-text"><%= books[i].author %></p>
+            <form action="/" method="POST">
+              <input type="hidden" name="book_id" value="<%= books[i].id %>">
+              <button type="submit" name="action" value="read" class="btn btn-primary mb-2 w-100">Read More</button>
+              <button type="submit" name="action" value="update" class="btn btn-success mb-2 w-100">Update</button>
+              <button type="submit" name="action" value="delete" class="btn btn-danger w-100">Delete</button>
             </form>
-            </div>
-            </div>
+          </div>
         </div>
-    </div>
+      </div>
     <% } %>
+  </div>
 </div>
 
 
