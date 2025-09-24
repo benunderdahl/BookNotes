@@ -1,0 +1,38 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mt-5">
+  <h2>Update Book</h2>
+  <form action="/update" method="POST">
+    <input type="hidden" name="id" value="<%= book.id %>">
+
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" value="<%= book.title %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="author" class="form-label">Author</label>
+      <input type="text" class="form-control" id="author" name="author" value="<%= book.author %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="summary" class="form-label">Summary</label>
+      <textarea class="form-control" id="summary" name="summary" rows="3"><%= book.summary %></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="isbn" class="form-label">ISBN</label>
+      <input type="text" class="form-control" id="isbn" name="isbn" value="<%= book.isbn %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="image_url" class="form-label">Image URL</label>
+      <input type="text" class="form-control" id="image_url" name="image_url" value="<%= book.image_url %>">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+
+
+<%- include('partials/footer.ejs') %>

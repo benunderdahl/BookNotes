@@ -35,8 +35,29 @@ app.post("/", async (req, res) => {
         const book = result.rows[0]
         res.render("read.ejs", { book })
         return 
+    } else if (req.body.action === "delete") {
+        await client.query("DELETE FROM books WHERE id = $1", [id])
+        return 
+    } else if (req.body.action === "update") {
+        res.redirect(303, `/update/${id}`)
+        return
     }
     res.redirect("/")
+})
+
+app.get("/update/:id", async (req, res) => {
+    const { id } = req.params
+    const result = await client.query("SELECT * FROM books WHERE id = $1", [id])
+    const book = result.rows[0]
+    res.render("update.ejs", { book })
+})
+
+app.post("/update", async (req, res) => {
+    const { id, title, author, summary, isbn, image_url } = req.body
+    await client.query(
+      "UPDATE books SET title=$1, author=$2, summary=$3, isbn=$4, image_url=$5 WHERE id=$6",
+      [title, author, summary, isbn, image_url, id])
+    res.redirect(303, "/")
 })
 
 app.get("/add", (req, res) => {
