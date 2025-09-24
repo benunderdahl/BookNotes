@@ -28,8 +28,14 @@ app.get("/", async (req, res) => {
     res.render("index.ejs", {books})
 })
 
-app.post("/", (req, res) => {
-    console.log(req.body.action)
+app.post("/", async (req, res) => {
+    const id = req.body.book_id
+    if (req.body.action === "read") {
+        const result = await client.query("SELECT * FROM books WHERE id = $1", [id])
+        const book = result.rows[0]
+        res.render("read.ejs", { book })
+        return 
+    }
     res.redirect("/")
 })
 

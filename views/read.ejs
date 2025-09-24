@@ -1,0 +1,38 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 m-5">
+      <table class="table table-bordered table-striped text-center">
+        <thead>
+          <tr>
+            <th colspan="2"><%= book.title %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <img src="<%= book.image_url %>" alt="<%= book.title %>" class="img-fluid">
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Author</strong></td>
+            <td><%= book.author %></td>
+          </tr>
+          <tr>
+            <td><strong>Summary</strong></td>
+            <td><%= book.summary %></td>
+          </tr>
+          <tr>
+            <td><strong>ISBN</strong></td>
+            <td><%= book.isbn %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<%- include('partials/footer.ejs') %>
